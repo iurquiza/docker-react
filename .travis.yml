@@ -1,0 +1,9 @@
+sudo: require
+services:
+  - docker
+
+before_install:
+  - docker build -t iurquiza/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true iurquiza/docker-react npm run test
